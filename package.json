@@ -1,0 +1,22 @@
+{
+  "name": "ovoko",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:api": "playwright test --project=api",
+    "test:ui": "playwright test tests/ebayCheckoutFlow.spec.ts --project=\"Google Chrome\" --project=\"Firefox\"",
+    "test:ui:chrome": "playwright test tests/ebayCheckoutFlow.spec.ts --project=\"Google Chrome\"",
+    "test:ui:firefox": "playwright test tests/ebayCheckoutFlow.spec.ts --project=\"Firefox\"",
+    "report": "playwright show-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.61.0",
+    "@types/node": "^25.9.3"
+  }
+}
