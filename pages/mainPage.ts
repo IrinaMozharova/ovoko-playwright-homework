@@ -56,14 +56,24 @@ export class MainPage {
   }
 
   async closeCookiesBanner(): Promise<void> {
-    console.info('[MainPage] Checking if cookies banner is visible');
+  console.info('[MainPage] Checking if cookies banner is visible');
 
-    const closeButton = this.page.locator('#gdpr-banner-decline-x');
+  const closeButton = this.page.locator('#gdpr-banner-decline-x');
 
-    await closeButton.click();
+  const isCookieBannerVisible = await closeButton
+    .waitFor({ state: 'visible', timeout: 5000 })
+    .then(() => true)
+    .catch(() => false);
 
-    console.info('[MainPage] Cookies banner was closed');
+  if (!isCookieBannerVisible) {
+    console.info('[MainPage] Cookies banner was not displayed');
+    return;
   }
+
+  await closeButton.click();
+
+  console.info('[MainPage] Cookies banner was closed');
+}
 
   async searchFor(searchTerm: string): Promise<void> {
     console.info(`[MainPage] Searching for "${searchTerm}"`);

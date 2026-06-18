@@ -6,7 +6,7 @@
   "scripts": {
     "test": "playwright test",
     "test:api": "playwright test --project=api",
-    "test:ui": "playwright test tests/ebayCheckoutFlow.spec.ts --project=\"Google Chrome\" --project=\"Firefox\"",
+    "test:ui": "playwright test tests/ebayCheckoutFlow.spec.ts",
     "test:ui:chrome": "playwright test tests/ebayCheckoutFlow.spec.ts --project=\"Google Chrome\"",
     "test:ui:firefox": "playwright test tests/ebayCheckoutFlow.spec.ts --project=\"Firefox\"",
     "report": "playwright show-report"
