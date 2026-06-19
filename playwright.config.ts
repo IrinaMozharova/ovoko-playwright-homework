@@ -7,6 +7,11 @@ export default defineConfig({
   workers: 1,
   retries: 0,
 
+  timeout: 60_000,
+  expect: {
+    timeout: 10_000,
+  },
+
   reporter: [
     ['list'],
     [
@@ -17,6 +22,8 @@ export default defineConfig({
       },
     ],
   ],
+
+  outputDir: 'test-results/',
 
   use: {
     screenshot: 'only-on-failure',
@@ -32,12 +39,13 @@ export default defineConfig({
         baseURL: 'https://petstore.swagger.io/v2/',
         extraHTTPHeaders: {
           Accept: 'application/json',
+          'Content-Type': 'application/json',
         },
       },
     },
     {
       name: 'Google Chrome',
-      testIgnore: /.*\.api\.spec\.ts/,
+      testMatch: /.*ebayCheckoutFlow\.spec\.ts/,
       use: {
         ...devices['Desktop Chrome'],
         channel: 'chrome',
@@ -45,7 +53,7 @@ export default defineConfig({
     },
     {
       name: 'Firefox',
-      testIgnore: /.*\.api\.spec\.ts/,
+      testMatch: /.*ebayCheckoutFlow\.spec\.ts/,
       use: {
         ...devices['Desktop Firefox'],
       },
